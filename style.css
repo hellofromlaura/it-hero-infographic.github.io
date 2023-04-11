@@ -53,7 +53,7 @@ img {
     display: flex;
 }
 .grey-bg {
-    background-color: #e2e2e2;
+    background-color: #F4F5F6;
 }
 a[href].btn:hover, a[href].btn:active, a.btn[href]:visited {
     color: #fff;
