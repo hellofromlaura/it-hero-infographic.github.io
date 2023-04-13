@@ -1,7 +1,7 @@
 AOS.init({once: true});
 
 anime({
-    targets: ['.hero .images .plane', '.start .images .plane'],
+    targets: ['.hero-db .images-db .plane-db', '.start-db .images-db .plane-db'],
     translateX: ['120%', '-650%'],
     translateY: ['175%', '-300%'],
     scale: 0.5,
@@ -11,7 +11,7 @@ anime({
     easing: 'linear',
 })
 anime({
-    targets: ['.hero .images .cloud', '.start .images .cloud'],
+    targets: ['.hero-db .images-db .cloud-db', '.start-db .images-db .cloud-db'],
     easing: 'linear',
     translateX: ['180%', '-865%'],
     translateZ: ['0', '0'],
@@ -20,7 +20,7 @@ anime({
     delay: 1000,
 });
 anime({
-    targets: ['.hero .images .clouds', '.start .images .clouds'],
+    targets: ['.hero-db .images-db .clouds-db', '.start-db .images-db .clouds-db'],
     easing: 'linear',
     translateX: ['120%', '-265%'],
     translateZ: ['0', '0'],
