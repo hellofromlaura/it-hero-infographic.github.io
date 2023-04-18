@@ -26,7 +26,7 @@ h3.h3-db {
 }
 p.p-db {
     font-size: calc(16px + (30 - 16) * ((100vw - 300px) / (1600 - 300)));
-    line-height: calc(2rem + (4 - 2) * ((100vw - 300px) / (1600 - 300)));
+    line-height: calc(2rem + (14 - 2) * ((100vw - 300px) / (1600 - 300)));
     margin: 0px; 
 }
 h1.h1-db, h2.h2-db, h3.h3-db, p.p-db {
