@@ -1,7 +1,7 @@
 AOS.init({once: true});
 
 anime({
-    targets: ['.hero-db .images-db .plane-db', '.start-db .images-db .plane-db'],
+    targets: ['.hero .images .plane', '.start .images .plane'],
     translateX: ['120%', '-650%'],
     translateY: ['175%', '-300%'],
     scale: 0.5,
@@ -11,7 +11,7 @@ anime({
     easing: 'linear',
 })
 anime({
-    targets: ['.hero-db .images-db .cloud-db', '.start-db .images-db .cloud-db'],
+    targets: ['.hero .images .cloud', '.start .images .cloud'],
     easing: 'linear',
     translateX: ['180%', '-865%'],
     translateZ: ['0', '0'],
@@ -20,7 +20,7 @@ anime({
     delay: 1000,
 });
 anime({
-    targets: ['.hero-db .images-db .clouds-db', '.start-db .images-db .clouds-db'],
+    targets: ['.hero .images .clouds', '.start .images .clouds'],
     easing: 'linear',
     translateX: ['120%', '-265%'],
     translateZ: ['0', '0'],
@@ -29,25 +29,11 @@ anime({
     delay: 500,
 });
 
-
+var controller = new ScrollMagic.Controller();
 
 const box1 = document.querySelector('#animate-stats1');
 const box2 = document.querySelector('#animate-stats2');
 const box3 = document.querySelector('#animate-stats3');
-
-console.log(box1)
-console.log(box2)
-console.log(box3)
-
-function isInViewport(el) {
-    const rect = el.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-}
 
 var bar1 = new ProgressBar.Circle(circle1, {
     strokeWidth: 8,
@@ -62,7 +48,6 @@ var bar1 = new ProgressBar.Circle(circle1, {
     }
 });
 
-
 var bar2 = new ProgressBar.Circle(circle2, {
     strokeWidth: 8,
     easing: 'easeInOut',
@@ -75,7 +60,6 @@ var bar2 = new ProgressBar.Circle(circle2, {
         bar.setText(Math.round(bar.value() * 100) + '%');
     }
 });
-
 
 var bar3 = new ProgressBar.Circle(circle3, {
     strokeWidth: 8,
@@ -90,14 +74,22 @@ var bar3 = new ProgressBar.Circle(circle3, {
     }
 });
 
-document.addEventListener('scroll', function () {
-    if (isInViewport(box1)) {
-        bar1.animate(0.89);  // Number from 0.0 to 1.0
-    }
-    if (isInViewport(box2)) {
-        bar2.animate(0.86);  // Number from 0.0 to 1.0
-    }
-    if (isInViewport(box3)) {
-        bar3.animate(0.66);  // Number from 0.0 to 1.0
-    }
+bar1.set(0);
+bar2.set(0);
+bar3.set(0);
+
+var trigger1 = new ScrollMagic.Scene({triggerElement: "#animate-stats1", duration: 200});
+var trigger2 = new ScrollMagic.Scene({triggerElement: "#animate-stats2", duration: 200});
+var trigger3 = new ScrollMagic.Scene({triggerElement: "#animate-stats3", duration: 200});
+trigger1.addTo(controller);
+trigger2.addTo(controller);
+trigger3.addTo(controller);
+trigger1.on("enter", function (e) {
+    bar1.animate(0.89);
+});
+trigger2.on("enter", function (e) {
+    bar2.animate(0.86);
+});
+trigger3.on("enter", function (e) {
+    bar3.animate(0.66);
 });
